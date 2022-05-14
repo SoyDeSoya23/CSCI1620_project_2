@@ -6,11 +6,13 @@ from alien import Alien, Extra
 from random import choice, randint
 from laser import Laser
 
-# score, health level, game over screen, add a start/restart/quit game button
 """
 The following source code was provided from: https://www.youtube.com/watch?v=o-6pADy5Mdg&t=534s
 """
-
+"""
+Added: displayed score at the end of the game, reset the player sprite position after a life is lost, 
+a game over screen with the obtained score, and options to start/restart/quit the game
+"""
 
 class Game:
     def __init__(self):
@@ -81,6 +83,12 @@ class Game:
             quit_surf = self.font.render('Press \'Q\' to quit', False, 'white')
             quit_rect = quit_surf.get_rect(center=(screen_width / 2, screen_height / 2 + 50))
             screen.blit(quit_surf, quit_rect)
+            space_surf = self.font.render('Press \'SPACE\' to shoot', False, 'white')
+            space_rect = space_surf.get_rect(center=(screen_width / 2, screen_height / 2 + 150))
+            screen.blit(space_surf, space_rect)
+            move_surf = self.font.render('Move using arrow keys', False, 'white')
+            move_rect = move_surf.get_rect(center=(screen_width / 2, screen_height / 2 + 200))
+            screen.blit(move_surf, move_rect)
 
             pygame.display.flip()
             clock.tick(60)
